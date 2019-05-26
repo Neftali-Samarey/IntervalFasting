@@ -13,6 +13,11 @@
 		ED2C2F16229773F800B857D3 /* Interval.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F14229773F800B857D3 /* Interval.xcdatamodeld */; };
 		ED2C2F18229773F900B857D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED2C2F17229773F900B857D3 /* Assets.xcassets */; };
 		ED2C2F1B229773F900B857D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED2C2F19229773F900B857D3 /* LaunchScreen.storyboard */; };
+		ED2C2F2A2297752100B857D3 /* CircularButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F292297752100B857D3 /* CircularButton.swift */; };
+		ED2C2F2C229775C000B857D3 /* ProgressbarParentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F2B229775C000B857D3 /* ProgressbarParentView.swift */; };
+		ED2C2F2F2297986600B857D3 /* ColorConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F2E2297986600B857D3 /* ColorConverter.swift */; };
+		ED2C2F312297994C00B857D3 /* GradienceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F302297994C00B857D3 /* GradienceExtension.swift */; };
+		ED2C2F332297AE4D00B857D3 /* MKMagneticProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F322297AE4D00B857D3 /* MKMagneticProgress.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		ED2C2F17229773F900B857D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED2C2F1A229773F900B857D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED2C2F1C229773F900B857D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED2C2F292297752100B857D3 /* CircularButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularButton.swift; sourceTree = "<group>"; };
+		ED2C2F2B229775C000B857D3 /* ProgressbarParentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressbarParentView.swift; sourceTree = "<group>"; };
+		ED2C2F2E2297986600B857D3 /* ColorConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConverter.swift; sourceTree = "<group>"; };
+		ED2C2F302297994C00B857D3 /* GradienceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradienceExtension.swift; sourceTree = "<group>"; };
+		ED2C2F322297AE4D00B857D3 /* MKMagneticProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMagneticProgress.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +67,91 @@
 			isa = PBXGroup;
 			children = (
 				ED2C2F0D229773F800B857D3 /* AppDelegate.swift */,
-				ED2C2F0F229773F800B857D3 /* ViewController.swift */,
+				ED2C2F2D2297985500B857D3 /* Helpers */,
+				ED2C2F262297745000B857D3 /* AddController */,
+				ED2C2F252297743200B857D3 /* Dashboard */,
 				ED2C2F11229773F800B857D3 /* Main.storyboard */,
 				ED2C2F17229773F900B857D3 /* Assets.xcassets */,
+				ED2C2F342299AF4000B857D3 /* Fonts */,
 				ED2C2F19229773F900B857D3 /* LaunchScreen.storyboard */,
 				ED2C2F1C229773F900B857D3 /* Info.plist */,
 				ED2C2F14229773F800B857D3 /* Interval.xcdatamodeld */,
 			);
 			path = Interval;
+			sourceTree = "<group>";
+		};
+		ED2C2F222297740B00B857D3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ED2C2F0F229773F800B857D3 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		ED2C2F232297741700B857D3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ED2C2F28229774F700B857D3 /* AddButton */,
+				ED2C2F272297746600B857D3 /* UI_Progress */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ED2C2F242297741D00B857D3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ED2C2F252297743200B857D3 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				ED2C2F242297741D00B857D3 /* Model */,
+				ED2C2F232297741700B857D3 /* View */,
+				ED2C2F222297740B00B857D3 /* Controller */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		ED2C2F262297745000B857D3 /* AddController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddController;
+			sourceTree = "<group>";
+		};
+		ED2C2F272297746600B857D3 /* UI_Progress */ = {
+			isa = PBXGroup;
+			children = (
+				ED2C2F322297AE4D00B857D3 /* MKMagneticProgress.swift */,
+				ED2C2F2B229775C000B857D3 /* ProgressbarParentView.swift */,
+			);
+			path = UI_Progress;
+			sourceTree = "<group>";
+		};
+		ED2C2F28229774F700B857D3 /* AddButton */ = {
+			isa = PBXGroup;
+			children = (
+				ED2C2F292297752100B857D3 /* CircularButton.swift */,
+			);
+			path = AddButton;
+			sourceTree = "<group>";
+		};
+		ED2C2F2D2297985500B857D3 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				ED2C2F2E2297986600B857D3 /* ColorConverter.swift */,
+				ED2C2F302297994C00B857D3 /* GradienceExtension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		ED2C2F342299AF4000B857D3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +225,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED2C2F332297AE4D00B857D3 /* MKMagneticProgress.swift in Sources */,
+				ED2C2F2A2297752100B857D3 /* CircularButton.swift in Sources */,
+				ED2C2F2F2297986600B857D3 /* ColorConverter.swift in Sources */,
 				ED2C2F16229773F800B857D3 /* Interval.xcdatamodeld in Sources */,
 				ED2C2F10229773F800B857D3 /* ViewController.swift in Sources */,
 				ED2C2F0E229773F800B857D3 /* AppDelegate.swift in Sources */,
+				ED2C2F2C229775C000B857D3 /* ProgressbarParentView.swift in Sources */,
+				ED2C2F312297994C00B857D3 /* GradienceExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

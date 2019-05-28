@@ -17,25 +17,43 @@ class ViewController: UIViewController {
 
     var progressBarview = ProgressbarParentView()
     var gradientViewLayer = UIView()
+    var horizontalControlStackview = HorizontalControlStack()
+    let selectedFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+    var slider : SliderView?
+    var tapGestureRecognozer = UITapGestureRecognizer()
+    
+    // PREPARED STACKVIEW OF CONTROLS
+   
+    
     
 //    var delegate : UpdateProgressBarDelegate? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedFeedbackGenerator.prepare()
         view.backgroundColor =  UIColor.init(red: 245/255, green: 246/255, blue: 250/255, alpha: 1.0)
         setupDashboardProgressbarView()
+        setupStackview()
         progressBarview.delegate = self
-        testButton()
+        tapGestureRecognozer = UITapGestureRecognizer(target: self, action: #selector(self.slideViewDown))
+
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
+//    let test = ["Something", "All good", "Keep it up"]
+    
     // MARK : - UI INITIALIZAION
     private func setupDashboardProgressbarView() {
         
         view.addSubview(progressBarview)
+        
+//        for items in test.enumerated() {
+//            self.progressBarview.progressBar.titleLabel.textWithAnimation(text: "\(items)", duration: 0.2)
+//        }
+        
 
         // Constraints
         progressBarview.heightAnchor.constraint(equalToConstant: self.view.bounds.height/2).isActive = true
@@ -47,7 +65,7 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-       setupLayer()
+        setupLayer()
     }
     
     // Gradient workaround layer on top of the progressBarView
@@ -61,24 +79,130 @@ class ViewController: UIViewController {
         // Workaround. Taking the progressBarView instance and sending its child to its back. Then showing it by setting itself to clear
         progressBarview.backgroundColor = .clear
         progressBarview.sendSubviewToBack(gradientViewLayer)
-        
-        // test
-    }
-
-    func testButton() {
-        let button = UIButton(frame: CGRect(x: 100, y: 450, width: 100, height: 30 ))
-        button.setTitle("Update", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.addTarget(self, action: #selector(self.updateUIprogressBar), for: .touchUpInside)
-        view.addSubview(button)
+    
     }
     
+    
+    // MARK: SETUP CONTROL STACK VIEW
+    func setupStackview() {
+        
+        horizontalControlStackview.translatesAutoresizingMaskIntoConstraints = false
+        horizontalControlStackview.addShadowing()
+
+        progressBarview.addSubview(horizontalControlStackview)
+        
+        horizontalControlStackview.leadingAnchor.constraint(equalTo: progressBarview.leadingAnchor, constant: 10).isActive = true
+        horizontalControlStackview.trailingAnchor.constraint(equalTo: progressBarview.trailingAnchor, constant: -10).isActive = true
+        horizontalControlStackview.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        horizontalControlStackview.bottomAnchor.constraint(equalTo: progressBarview.bottomAnchor, constant: 30).isActive = true
+        
+        // Get the button's for set target actions
+        horizontalControlStackview.addNewFasting.addTarget(self, action: #selector(ViewController.addNewFasting), for: .touchUpInside)
+        horizontalControlStackview.editFasting.addTarget(self, action: #selector(ViewController.editFastingEntry), for: .touchUpInside)
+        horizontalControlStackview.deleteFasting.addTarget(self, action: #selector(ViewController.deleteFastingEntry), for: .touchUpInside)
+
+    }
+    
+    // MARK: UI DASHBOARD BUTTONS
+    @objc func addNewFasting() {
+        selectedFeedbackGenerator.impactOccurred()
+        showSlider()
+    }
+    
+    @objc func editFastingEntry() {
+        selectedFeedbackGenerator.impactOccurred()
+    }
+    
+    @objc func deleteFastingEntry() {
+        selectedFeedbackGenerator.impactOccurred()
+    }
+
+    let sliderBackgroundView : UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.6) // set hhe opacity
+     
+      //  view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    // MARK: CREATION OF THE UIVIEW
+    func showSlider() {
+        
+         slider = SliderView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/2))
+        slider?.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Add the animation the main thread
+        
+        if let masterSlider = slider {
+            
+            // Recognizer
+            //sliderBackgroundView.addGestureRecognizer(tapGestureRecognozer)
+            // Set the subviews
+            view.addSubview(sliderBackgroundView)
+            sliderBackgroundView.alpha = 0
+            sliderBackgroundView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            UIView.animate(withDuration: 0.3) {
+                self.sliderBackgroundView.alpha = 1
+            }
+            
+            // Now continue to then slide the card into place
+            sliderBackgroundView.addSubview(masterSlider)
+
+            masterSlider.topAnchor.constraint(equalTo: progressBarview.progressBar.topAnchor, constant: 0).isActive = true
+            masterSlider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+            masterSlider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+            
+            // UI Controls
+            masterSlider.dynamicButton.addTarget(self, action: #selector(self.beginFastingAction), for: .touchUpInside)
+
+        }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+
+    
+    // MARK: SLIDE METHOD DOWN
+    @objc func slideViewDown() {
+        
+        if let slider = slider {
+            
+            slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+    
+            UIView.animate(withDuration: 0.2, animations: {
+                
+                // Slide the view down below the bottom anchor of the main view
+                slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.slider!.frame.height/2)
+                self.view.layoutIfNeeded()
+                self.sliderBackgroundView.alpha = 0
+            }, completion: { (s) in
+                
+                slider.removeFromSuperview()
+                self.sliderBackgroundView.removeFromSuperview()
+                self.slider = nil
+            })
+            
+        }
+
+        
+        
+    }
+    
+    // MARK: UI CONTROLS
+    @objc func beginFastingAction() {
+        print("Beginning ...")
+        slideViewDown()
+    }
+    
+    
+    
+    // Method callback is workign in this section
     @objc func updateUIprogressBar() {
         print("Invoking a test ...")
-        progressBarview.progressBar.setProgress(progress: 60.0, animated: true)
-       // Test the given value
     }
 }
+
 
 extension ViewController : UpdateProgressBarDelegate {
     // MARK: - PROGRESS BAR DELEGATE

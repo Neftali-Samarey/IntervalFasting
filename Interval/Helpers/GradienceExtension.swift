@@ -29,4 +29,12 @@ extension UIView {
         self.layer.insertSublayer(gradient, at: 0)
     }
     
+    func addShadowing() {
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowOffset = CGSize(width: 2, height: 2)
+        self.layer.masksToBounds = false;
+        self.layer.shadowRadius = 2;
+        self.layer.shadowOpacity = 0.3;
+    }
+    
 }

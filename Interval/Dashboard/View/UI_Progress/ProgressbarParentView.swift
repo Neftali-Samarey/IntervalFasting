@@ -19,6 +19,20 @@ public class ProgressbarParentView: UIView {
     public var progressBar = MKMagneticProgress()
     var delegate : UpdateProgressBarDelegate? = nil
     
+    // Dynamic property
+    
+    var dynamicProgressValue : CGFloat = 0.0
+    
+    // Property observer
+    
+//    var dynamicValue: CGFloat {
+//        willSet {
+//
+//        } didSet {
+//
+//        }
+//    }
+    
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initializeDefaultStyling()
@@ -55,8 +69,7 @@ public class ProgressbarParentView: UIView {
     private func addProgressBarToParentview() {
         
        // progressBar.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-    
-        //progressBar.setProgress(progress: 0.5, animated: true)
+      //  progressBar.setProgress(progress: dynamicProgressValue, animated: true)
         progressBar.translatesAutoresizingMaskIntoConstraints = false
         progressBar.progressShapeColor = UIColor.white.withAlphaComponent(0.8)
         progressBar.backgroundShapeColor = UIColor.white.withAlphaComponent(0.2)
@@ -78,17 +91,25 @@ public class ProgressbarParentView: UIView {
         self.bottomAnchor.constraint(equalTo: progressBar.bottomAnchor, constant: 25).isActive = true
     }
     
+    internal func updateProgressBar() {
+        DispatchQueue.main.async {
+            // Invoke and update the progress Bar
+            print("Called Dispatch with updated value : \(self.dynamicProgressValue) ")
+            self.progressBar.setProgress(progress: self.dynamicProgressValue, animated: true) //FIXME:  Dispatch not working in
+        }
+    }
+    
     // MARK: - PUBLIC METHODS TO ACCESS THE PROGRESS BAR
-    fileprivate func defaultGraphSetup() {
+    public func defaultGraphSetup() {
         progressBar.setProgress(progress: 0.0, animated: false)
     }
     
-    public func updateWithCurrentValue(value: CGFloat) {
-        
-        progressBar.setProgress(progress: CGFloat(value), animated: false)
-        
-//        var testValue = delegate?.updateWithValue()
-//        progressBar.setProgress(progress: testValue!, animated: true)
+    public func updateProgressBarWithValue(of: CGFloat) {
+        dynamicProgressValue += of
+        updateProgressBar()
     }
+    
+    
+    
 
 }

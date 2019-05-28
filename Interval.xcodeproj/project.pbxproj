@@ -18,6 +18,10 @@
 		ED2C2F2F2297986600B857D3 /* ColorConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F2E2297986600B857D3 /* ColorConverter.swift */; };
 		ED2C2F312297994C00B857D3 /* GradienceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F302297994C00B857D3 /* GradienceExtension.swift */; };
 		ED2C2F332297AE4D00B857D3 /* MKMagneticProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F322297AE4D00B857D3 /* MKMagneticProgress.swift */; };
+		ED95F230229CDB0000D6EB40 /* HorizontalControlStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F22F229CDB0000D6EB40 /* HorizontalControlStack.swift */; };
+		ED95F232229CF16C00D6EB40 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F231229CF16C00D6EB40 /* Extensions.swift */; };
+		ED95F237229CF69000D6EB40 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F236229CF69000D6EB40 /* SliderView.swift */; };
+		ED95F239229DC67500D6EB40 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED95F238229DC63D00D6EB40 /* Roboto-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		ED2C2F2E2297986600B857D3 /* ColorConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConverter.swift; sourceTree = "<group>"; };
 		ED2C2F302297994C00B857D3 /* GradienceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradienceExtension.swift; sourceTree = "<group>"; };
 		ED2C2F322297AE4D00B857D3 /* MKMagneticProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMagneticProgress.swift; sourceTree = "<group>"; };
+		ED95F22F229CDB0000D6EB40 /* HorizontalControlStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalControlStack.swift; sourceTree = "<group>"; };
+		ED95F231229CF16C00D6EB40 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		ED95F236229CF69000D6EB40 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		ED95F238229DC63D00D6EB40 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,7 @@
 		ED2C2F232297741700B857D3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ED659F78229CDA610089D816 /* ControlView */,
 				ED2C2F28229774F700B857D3 /* AddButton */,
 				ED2C2F272297746600B857D3 /* UI_Progress */,
 			);
@@ -117,6 +126,9 @@
 		ED2C2F262297745000B857D3 /* AddController */ = {
 			isa = PBXGroup;
 			children = (
+				ED95F235229CF63800D6EB40 /* Model */,
+				ED95F234229CF63400D6EB40 /* View */,
+				ED95F233229CF62800D6EB40 /* Controller */,
 			);
 			path = AddController;
 			sourceTree = "<group>";
@@ -143,6 +155,7 @@
 			children = (
 				ED2C2F2E2297986600B857D3 /* ColorConverter.swift */,
 				ED2C2F302297994C00B857D3 /* GradienceExtension.swift */,
+				ED95F231229CF16C00D6EB40 /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -150,8 +163,39 @@
 		ED2C2F342299AF4000B857D3 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				ED95F238229DC63D00D6EB40 /* Roboto-Medium.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		ED659F78229CDA610089D816 /* ControlView */ = {
+			isa = PBXGroup;
+			children = (
+				ED95F22F229CDB0000D6EB40 /* HorizontalControlStack.swift */,
+			);
+			name = ControlView;
+			sourceTree = "<group>";
+		};
+		ED95F233229CF62800D6EB40 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ED95F236229CF69000D6EB40 /* SliderView.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		ED95F234229CF63400D6EB40 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ED95F235229CF63800D6EB40 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED95F239229DC67500D6EB40 /* Roboto-Medium.ttf in Resources */,
 				ED2C2F1B229773F900B857D3 /* LaunchScreen.storyboard in Resources */,
 				ED2C2F18229773F900B857D3 /* Assets.xcassets in Resources */,
 				ED2C2F13229773F800B857D3 /* Main.storyboard in Resources */,
@@ -229,7 +274,10 @@
 				ED2C2F2A2297752100B857D3 /* CircularButton.swift in Sources */,
 				ED2C2F2F2297986600B857D3 /* ColorConverter.swift in Sources */,
 				ED2C2F16229773F800B857D3 /* Interval.xcdatamodeld in Sources */,
+				ED95F237229CF69000D6EB40 /* SliderView.swift in Sources */,
 				ED2C2F10229773F800B857D3 /* ViewController.swift in Sources */,
+				ED95F232229CF16C00D6EB40 /* Extensions.swift in Sources */,
+				ED95F230229CDB0000D6EB40 /* HorizontalControlStack.swift in Sources */,
 				ED2C2F0E229773F800B857D3 /* AppDelegate.swift in Sources */,
 				ED2C2F2C229775C000B857D3 /* ProgressbarParentView.swift in Sources */,
 				ED2C2F312297994C00B857D3 /* GradienceExtension.swift in Sources */,

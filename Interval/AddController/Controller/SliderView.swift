@@ -16,6 +16,10 @@ enum EntryType {
 
 class SliderView : UIView {
     
+    
+    // MARK: UI PROPERTIES
+    let timeframeButtons = TimeframeStackview()
+    
     let mainBackground : UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.black
@@ -26,8 +30,9 @@ class SliderView : UIView {
     let viewTitle : UILabel = {
         let label = UILabel()
         label.text = "New Goal"
-        label.textColor = UIColor.gray
-        label.font = UIFont(name: "Roboto-Medium", size: 25.0)
+        label.textColor = UIColor.init(hexString: "#383838")
+        label.layer.backgroundColor = UIColor.clear.cgColor
+        label.font = UIFont(name: "Roboto-Medium", size: 22.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -35,11 +40,21 @@ class SliderView : UIView {
     let dynamicButton : UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Start", for: .normal)
-        button.backgroundColor = UIColor.init(hexString: "#07A448")
+        button.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 23.0)
+        button.backgroundColor = UIColor.turquoiseColor()
         button.layer.cornerRadius = 6
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    let closeButton : UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "close"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -58,6 +73,8 @@ class SliderView : UIView {
         setupBackgroundView()
     }
     
+    
+    
     private func setupBackgroundView() {
         self.addSubview(mainBackground)
         self.sendSubviewToBack(mainBackground)
@@ -66,7 +83,27 @@ class SliderView : UIView {
     }
     
     private func setTopLayout() {
+        
+        timeframeButtons.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addSubview(closeButton)
         self.addSubview(viewTitle)
+        self.addSubview(timeframeButtons)
+        
+        // Close button
+        self.closeButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
+        self.closeButton.widthAnchor.constraint(equalToConstant: 52).isActive = true
+        self.closeButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
+        self.closeButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        
+        // Middle layout (buttons)
+        self.timeframeButtons.topAnchor.constraint(equalTo: viewTitle.bottomAnchor, constant: 30).isActive = true
+        self.timeframeButtons.heightAnchor.constraint(equalToConstant: self.bounds.height/5).isActive = true
+        self.timeframeButtons.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        self.timeframeButtons.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+        
+        
+        // Label title
         
         self.viewTitle.textAlignment = .center
         
@@ -75,6 +112,8 @@ class SliderView : UIView {
         self.viewTitle.widthAnchor.constraint(equalToConstant: self.bounds.width - 20).isActive = true
         self.viewTitle.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
+    
+   
     
     private func setButtonLayout() {
         self.addSubview(dynamicButton)

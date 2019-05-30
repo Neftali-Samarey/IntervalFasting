@@ -43,18 +43,15 @@ class ViewController: UIViewController {
         return .lightContent
     }
     
-//    let test = ["Something", "All good", "Keep it up"]
+     var hello: [String] = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
     
     // MARK : - UI INITIALIZAION
     private func setupDashboardProgressbarView() {
         
         view.addSubview(progressBarview)
         
-//        for items in test.enumerated() {
-//            self.progressBarview.progressBar.titleLabel.textWithAnimation(text: "\(items)", duration: 0.2)
-//        }
+//        setOverlayTitle()
         
-
         // Constraints
         progressBarview.heightAnchor.constraint(equalToConstant: self.view.bounds.height/2).isActive = true
         progressBarview.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0).isActive = true
@@ -62,6 +59,35 @@ class ViewController: UIViewController {
         progressBarview.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0).isActive = true
     
     }
+    
+//    var iterator = 1;
+//
+//    func setOverlayTitle() {
+//
+//        UIView.animate(withDuration: 0.7, delay: 1.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+//                self.progressBarview.progressBar.titleLabel.alpha = 0.0
+//        },
+//        completion: {(finished: Bool) -> Void in
+//                print(self.iterator)
+//                self.progressBarview.progressBar.titleLabel.text = self.hello[self.iterator]
+//
+//                // Fade in
+//                UIView.animate(withDuration: 0.7, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations:
+//                    {
+//                        self.progressBarview.progressBar.titleLabel.alpha = 1.0
+//                },
+//                                           completion:
+//                    {(finished: Bool) -> Void in
+//                        self.iterator += 1
+//
+//                        if self.iterator < self.hello.count {
+//                            self.setOverlayTitle();
+//
+//                        }
+//
+//                })
+//        })
+//    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -153,13 +179,16 @@ class ViewController: UIViewController {
             masterSlider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
             
             // UI Controls
+            masterSlider.closeButton.addTarget(self, action: #selector(self.closeChildView), for: .touchUpInside) // Slide down
             masterSlider.dynamicButton.addTarget(self, action: #selector(self.beginFastingAction), for: .touchUpInside)
 
         }
-        
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.view.layoutIfNeeded()
-        })
+        }) { _ in
+            // Do some additional work after loading this view
+        }
+        
     }
 
     
@@ -169,19 +198,34 @@ class ViewController: UIViewController {
         if let slider = slider {
             
             slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
-    
-            UIView.animate(withDuration: 0.2, animations: {
-                
-                // Slide the view down below the bottom anchor of the main view
+            
+            
+            // Animation with damping effect
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.slider!.frame.height/2)
                 self.view.layoutIfNeeded()
                 self.sliderBackgroundView.alpha = 0
-            }, completion: { (s) in
-                
+            }) { _ in
+                // Do some additional work after loading this view
                 slider.removeFromSuperview()
                 self.sliderBackgroundView.removeFromSuperview()
                 self.slider = nil
-            })
+            }
+            
+            // Animation without damping effect (standard animation)
+    
+//            UIView.animate(withDuration: 0.2, animations: {
+//
+//                // Slide the view down below the bottom anchor of the main view
+//                slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.slider!.frame.height/2)
+//                self.view.layoutIfNeeded()
+//                self.sliderBackgroundView.alpha = 0
+//            }, completion: { (s) in
+//
+//                slider.removeFromSuperview()
+//                self.sliderBackgroundView.removeFromSuperview()
+//                self.slider = nil
+//            })
             
         }
 
@@ -189,9 +233,16 @@ class ViewController: UIViewController {
         
     }
     
+
+    
     // MARK: UI CONTROLS
     @objc func beginFastingAction() {
         print("Beginning ...")
+        
+        // Save the data
+        
+        
+        // ... and finally, slide down
         slideViewDown()
     }
     
@@ -200,6 +251,11 @@ class ViewController: UIViewController {
     // Method callback is workign in this section
     @objc func updateUIprogressBar() {
         print("Invoking a test ...")
+    }
+    
+    @objc func closeChildView() {
+        selectedFeedbackGenerator.impactOccurred()
+        slideViewDown()
     }
 }
 

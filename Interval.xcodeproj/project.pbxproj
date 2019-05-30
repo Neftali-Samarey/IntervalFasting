@@ -22,6 +22,8 @@
 		ED95F232229CF16C00D6EB40 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F231229CF16C00D6EB40 /* Extensions.swift */; };
 		ED95F237229CF69000D6EB40 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F236229CF69000D6EB40 /* SliderView.swift */; };
 		ED95F239229DC67500D6EB40 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED95F238229DC63D00D6EB40 /* Roboto-Medium.ttf */; };
+		ED95F23B229DF32900D6EB40 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F23A229DF32900D6EB40 /* UIColorExtensions.swift */; };
+		ED95F23E229E44D200D6EB40 /* TimeframeStackview.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F23D229E44D200D6EB40 /* TimeframeStackview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		ED95F231229CF16C00D6EB40 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		ED95F236229CF69000D6EB40 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		ED95F238229DC63D00D6EB40 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		ED95F23A229DF32900D6EB40 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		ED95F23D229E44D200D6EB40 /* TimeframeStackview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeStackview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,7 @@
 		ED2C2F2D2297985500B857D3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				ED95F23A229DF32900D6EB40 /* UIColorExtensions.swift */,
 				ED2C2F2E2297986600B857D3 /* ColorConverter.swift */,
 				ED2C2F302297994C00B857D3 /* GradienceExtension.swift */,
 				ED95F231229CF16C00D6EB40 /* Extensions.swift */,
@@ -187,6 +192,7 @@
 		ED95F234229CF63400D6EB40 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ED95F23D229E44D200D6EB40 /* TimeframeStackview.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -273,8 +279,10 @@
 				ED2C2F332297AE4D00B857D3 /* MKMagneticProgress.swift in Sources */,
 				ED2C2F2A2297752100B857D3 /* CircularButton.swift in Sources */,
 				ED2C2F2F2297986600B857D3 /* ColorConverter.swift in Sources */,
+				ED95F23B229DF32900D6EB40 /* UIColorExtensions.swift in Sources */,
 				ED2C2F16229773F800B857D3 /* Interval.xcdatamodeld in Sources */,
 				ED95F237229CF69000D6EB40 /* SliderView.swift in Sources */,
+				ED95F23E229E44D200D6EB40 /* TimeframeStackview.swift in Sources */,
 				ED2C2F10229773F800B857D3 /* ViewController.swift in Sources */,
 				ED95F232229CF16C00D6EB40 /* Extensions.swift in Sources */,
 				ED95F230229CDB0000D6EB40 /* HorizontalControlStack.swift in Sources */,

@@ -46,7 +46,7 @@ class HorizontalControlStack: UIView {
         // Initialize the UI properties
         addNewFasting = UIButton(type: .custom)
         addNewFasting.setImage(addNewIcon, for: .normal)
-        
+       
         
         editFasting = UIButton(type: .custom)
         editFasting.setImage(editIcon, for: .normal)
@@ -72,6 +72,11 @@ class HorizontalControlStack: UIView {
         backgroundColor = UIColor.white
         layer.cornerRadius = 7
         addSubview(stackview)
+        
+        // Button width overrides
+        addNewFasting.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        editFasting.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        deleteFasting.widthAnchor.constraint(equalToConstant: 80).isActive = true
         
         // MARK: - Constraints
         stackview.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true

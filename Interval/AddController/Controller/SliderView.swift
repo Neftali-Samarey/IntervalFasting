@@ -14,7 +14,15 @@ enum EntryType {
     case Edit
 }
 
+protocol getSliderSelectionDataDelegate {
+    func dataFromSliderControllerWith(test: Int)
+}
+
 class SliderView : UIView {
+    
+    
+    // Delegate
+    var delegate : getSliderSelectionDataDelegate? = nil
     
     
     // MARK: UI PROPERTIES
@@ -58,6 +66,7 @@ class SliderView : UIView {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
         setTopLayout()
         setButtonLayout()
         setupBackgroundView()
@@ -65,7 +74,7 @@ class SliderView : UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.cornerRadius = 12
+        self.layer.cornerRadius = 15
         self.backgroundColor = UIColor.init(red: 245/255, green: 246/255, blue: 250/255, alpha: 1.0)
         
         setTopLayout()
@@ -73,6 +82,9 @@ class SliderView : UIView {
         setupBackgroundView()
     }
     
+    deinit {
+        print("Parent level data left with: \(getTimeframeSelectedIndex())")
+    }
     
     
     private func setupBackgroundView() {
@@ -89,6 +101,8 @@ class SliderView : UIView {
         self.addSubview(closeButton)
         self.addSubview(viewTitle)
         self.addSubview(timeframeButtons)
+        
+      
         
         // Close button
         self.closeButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
@@ -117,12 +131,26 @@ class SliderView : UIView {
     
     private func setButtonLayout() {
         self.addSubview(dynamicButton)
+        
+      //  dynamicButton.addTarget(self, action: #selector(SliderView.comfirmAllDatapoints), for: .touchUpInside)
+        
         DispatchQueue.main.async {
             self.dynamicButton.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
             self.dynamicButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
             self.dynamicButton.widthAnchor.constraint(equalToConstant: self.bounds.width - 30).isActive = true
             self.dynamicButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -40).isActive = true
         }
+    }
+    
+    // MARK: Gets the index (1, 2, 3) from the timeframe view itself. Getter only
+    func getTimeframeSelectedIndex() -> Int {
+        return timeframeButtons.currentSelectedButton
+    }
+    
+    
+    // MARK: Method for the button to then pass this data backt to the main controller
+    @objc func comfirmAllDatapoints() {
+        delegate?.dataFromSliderControllerWith(test: getTimeframeSelectedIndex())
     }
     
 }

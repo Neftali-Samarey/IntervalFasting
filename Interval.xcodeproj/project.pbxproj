@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED125A1B22A3876900E387E4 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED125A1A22A3876900E387E4 /* LocalNotificationManager.swift */; };
 		ED2C2F0E229773F800B857D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F0D229773F800B857D3 /* AppDelegate.swift */; };
 		ED2C2F10229773F800B857D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F0F229773F800B857D3 /* ViewController.swift */; };
 		ED2C2F13229773F800B857D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED2C2F11229773F800B857D3 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED125A1A22A3876900E387E4 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		ED2C2F0A229773F800B857D3 /* Interval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Interval.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED2C2F0D229773F800B857D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED2C2F0F229773F800B857D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED125A1822A3828000E387E4 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				ED2C2F14229773F800B857D3 /* Interval.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		ED125A1922A3875100E387E4 /* App Services */ = {
+			isa = PBXGroup;
+			children = (
+				ED125A1A22A3876900E387E4 /* LocalNotificationManager.swift */,
+			);
+			path = "App Services";
+			sourceTree = "<group>";
+		};
 		ED2C2F01229773F800B857D3 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				ED2C2F0D229773F800B857D3 /* AppDelegate.swift */,
+				ED125A1922A3875100E387E4 /* App Services */,
+				ED125A1822A3828000E387E4 /* Core Data */,
 				ED2C2F2D2297985500B857D3 /* Helpers */,
 				ED2C2F262297745000B857D3 /* AddController */,
 				ED2C2F252297743200B857D3 /* Dashboard */,
@@ -87,7 +107,6 @@
 				ED2C2F342299AF4000B857D3 /* Fonts */,
 				ED2C2F19229773F900B857D3 /* LaunchScreen.storyboard */,
 				ED2C2F1C229773F900B857D3 /* Info.plist */,
-				ED2C2F14229773F800B857D3 /* Interval.xcdatamodeld */,
 			);
 			path = Interval;
 			sourceTree = "<group>";
@@ -276,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED125A1B22A3876900E387E4 /* LocalNotificationManager.swift in Sources */,
 				ED2C2F332297AE4D00B857D3 /* MKMagneticProgress.swift in Sources */,
 				ED2C2F2A2297752100B857D3 /* CircularButton.swift in Sources */,
 				ED2C2F2F2297986600B857D3 /* ColorConverter.swift in Sources */,

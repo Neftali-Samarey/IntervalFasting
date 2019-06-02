@@ -13,7 +13,9 @@ import UIKit
 //    func updateDashboardWithCurrentData(current: CGFloat)
 //}
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, getSliderSelectionDataDelegate {
+   
+    
 
     var progressBarview = ProgressbarParentView()
     var gradientViewLayer = UIView()
@@ -161,7 +163,8 @@ class ViewController: UIViewController {
         
         if let masterSlider = slider {
             
-            // Recognizer
+            // Delegate adherence
+            masterSlider.delegate = self
             //sliderBackgroundView.addGestureRecognizer(tapGestureRecognozer)
             // Set the subviews
             view.addSubview(sliderBackgroundView)
@@ -179,7 +182,8 @@ class ViewController: UIViewController {
             masterSlider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
             
             // UI Controls
-            masterSlider.closeButton.addTarget(self, action: #selector(self.closeChildView), for: .touchUpInside) // Slide down
+//            masterSlider.closeButton.addTarget(self, action: #selector(self.closeChildView), for: .touchUpInside) // Slide down
+            masterSlider.closeButton.addTarget(self, action: #selector(self.slideDownWithExpression), for: .touchUpInside) // Slide down
             masterSlider.dynamicButton.addTarget(self, action: #selector(self.beginFastingAction), for: .touchUpInside)
 
         }
@@ -198,8 +202,7 @@ class ViewController: UIViewController {
         if let slider = slider {
             
             slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
-            
-            
+        
             // Animation with damping effect
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.slider!.frame.height/2)
@@ -211,26 +214,48 @@ class ViewController: UIViewController {
                 self.sliderBackgroundView.removeFromSuperview()
                 self.slider = nil
             }
-            
-            // Animation without damping effect (standard animation)
-    
-//            UIView.animate(withDuration: 0.2, animations: {
-//
-//                // Slide the view down below the bottom anchor of the main view
-//                slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.slider!.frame.height/2)
-//                self.view.layoutIfNeeded()
-//                self.sliderBackgroundView.alpha = 0
-//            }, completion: { (s) in
-//
-//                slider.removeFromSuperview()
-//                self.sliderBackgroundView.removeFromSuperview()
-//                self.slider = nil
-//            })
-            
         }
-
-        
-        
+    }
+    
+    
+    // MARK: - ANIMATION WITH EXPRESSIONS
+    @objc func slideDownWithExpression() {
+        selectedFeedbackGenerator.impactOccurred()
+        if let slider = slider {
+            slider.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+            
+            // Animation
+            DispatchQueue.main.async {
+                // Handle animation up and then down
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.slider!.center.y -= 35
+                }, completion: { (completed) in
+                    if completed {
+                        // Completion of the remainder of the slider slide down
+                        UIView.animate(withDuration: 0.2, animations: {
+                            slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.slider!.frame.height/2 )
+                            slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.slider!.frame.height/2)
+                            self.view.layoutIfNeeded()
+                            self.sliderBackgroundView.alpha = 0
+                            
+                        }, completion: { (didComplete) in
+                            if didComplete {
+                                slider.removeFromSuperview()
+                                self.sliderBackgroundView.removeFromSuperview()
+                                self.slider = nil
+                            }
+                        })
+                    }
+                })
+            }
+        }
+    }
+    
+    
+    
+    @objc func dataFromSliderControllerWith(test: Int) {
+        print("Deleaged data is \(test)")
+        slideViewDown() // there is an animation bug whislt this is loading down, use the other method, don't use this
     }
     
 
@@ -240,10 +265,10 @@ class ViewController: UIViewController {
         print("Beginning ...")
         
         // Save the data
-        
+
         
         // ... and finally, slide down
-        slideViewDown()
+        slideDownWithExpression()
     }
     
     
@@ -258,6 +283,7 @@ class ViewController: UIViewController {
         slideViewDown()
     }
 }
+
 
 
 extension ViewController : UpdateProgressBarDelegate {

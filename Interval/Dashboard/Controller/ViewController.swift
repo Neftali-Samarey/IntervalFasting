@@ -24,6 +24,10 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
     var slider : SliderView?
     var tapGestureRecognozer = UITapGestureRecognizer()
     
+    var stopButton = DynamicButton()
+    
+    var isCurrentlyFasting = false
+    
     // PREPARED STACKVIEW OF CONTROLS
    
     
@@ -37,12 +41,38 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
         setupDashboardProgressbarView()
         setupStackview()
         progressBarview.delegate = self
+        setStopButton()
         tapGestureRecognozer = UITapGestureRecognizer(target: self, action: #selector(self.slideViewDown))
 
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    // MARK: - BUTTON SETUP
+    internal func setStopButton() {
+        
+        
+        // Check and hide the button
+        guard isCurrentlyFasting != false else {
+            return
+        }
+        
+        stopButton = DynamicButton(type: .custom)
+        stopButton.backgroundColor = UIColor.TipiePink()
+        stopButton.setTitle("Stop Fasting", for: .normal)
+        stopButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 19.0)
+        stopButton.layer.cornerRadius = 8
+        stopButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(stopButton)
+        
+        // Constraints
+        stopButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        stopButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        stopButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        stopButton.heightAnchor.constraint(equalToConstant: CGFloat(45)).isActive = true
     }
     
      var hello: [String] = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
@@ -233,10 +263,11 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
                     if completed {
                         // Completion of the remainder of the slider slide down
                         UIView.animate(withDuration: 0.2, animations: {
+                            self.sliderBackgroundView.alpha = 0
+                            self.slider?.alpha = 1
                             slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.slider!.frame.height/2 )
                             slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.slider!.frame.height/2)
                             self.view.layoutIfNeeded()
-                            self.sliderBackgroundView.alpha = 0
                             
                         }, completion: { (didComplete) in
                             if didComplete {

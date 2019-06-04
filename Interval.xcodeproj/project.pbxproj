@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ED125A1B22A3876900E387E4 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED125A1A22A3876900E387E4 /* LocalNotificationManager.swift */; };
+		ED125A1E22A4D64700E387E4 /* DynamicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED125A1D22A4D64700E387E4 /* DynamicButton.swift */; };
 		ED2C2F0E229773F800B857D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F0D229773F800B857D3 /* AppDelegate.swift */; };
 		ED2C2F10229773F800B857D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F0F229773F800B857D3 /* ViewController.swift */; };
 		ED2C2F13229773F800B857D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED2C2F11229773F800B857D3 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		ED125A1A22A3876900E387E4 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		ED125A1D22A4D64700E387E4 /* DynamicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicButton.swift; sourceTree = "<group>"; };
 		ED2C2F0A229773F800B857D3 /* Interval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Interval.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED2C2F0D229773F800B857D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED2C2F0F229773F800B857D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,14 @@
 				ED125A1A22A3876900E387E4 /* LocalNotificationManager.swift */,
 			);
 			path = "App Services";
+			sourceTree = "<group>";
+		};
+		ED125A1C22A4D61C00E387E4 /* Custom Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				ED125A1D22A4D64700E387E4 /* DynamicButton.swift */,
+			);
+			path = "Custom Buttons";
 			sourceTree = "<group>";
 		};
 		ED2C2F01229773F800B857D3 = {
@@ -176,6 +186,7 @@
 		ED2C2F2D2297985500B857D3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				ED125A1C22A4D61C00E387E4 /* Custom Buttons */,
 				ED95F23A229DF32900D6EB40 /* UIColorExtensions.swift */,
 				ED2C2F2E2297986600B857D3 /* ColorConverter.swift */,
 				ED2C2F302297994C00B857D3 /* GradienceExtension.swift */,
@@ -309,6 +320,7 @@
 				ED2C2F0E229773F800B857D3 /* AppDelegate.swift in Sources */,
 				ED2C2F2C229775C000B857D3 /* ProgressbarParentView.swift in Sources */,
 				ED2C2F312297994C00B857D3 /* GradienceExtension.swift in Sources */,
+				ED125A1E22A4D64700E387E4 /* DynamicButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

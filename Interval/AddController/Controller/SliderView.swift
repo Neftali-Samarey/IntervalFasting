@@ -21,6 +21,17 @@ protocol getSliderSelectionDataDelegate {
 class SliderView : UIView {
     
     
+    // Property observer
+//    var hasTimeInputBeenSelected : String  {
+//        willSet {
+//            print("Will be called")
+//        }
+//        didSet {
+//            print("Did set called ")
+//        }
+//    }
+    
+    
     // Delegate
     var delegate : getSliderSelectionDataDelegate? = nil
     
@@ -102,7 +113,11 @@ class SliderView : UIView {
         self.addSubview(viewTitle)
         self.addSubview(timeframeButtons)
         
-      
+        // Disable the set button for now until a selection is made
+//        dynamicButton.isEnabled = false
+//        if !dynamicButton.isEnabled {
+//            dynamicButton.backgroundColor = UIColor.gray
+//        }
         
         // Close button
         self.closeButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true

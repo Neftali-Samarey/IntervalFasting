@@ -149,6 +149,18 @@ extension UIColor {
     }
     
     
+    // UI Flat clean Colors
     
+    class func UIPinkOrange() -> UIColor {
+         return UIColor(r: 230, g: 144, b: 130)
+    }
+    
+    class func UIPinkOrangeDarkerShade() -> UIColor {
+        return UIColor(r: 222, g: 125, b: 112)
+    }
+    
+    class func UIMintGreen() -> UIColor {
+        return UIColor(r: 164, g: 208, b: 199)
+    }
    
 }

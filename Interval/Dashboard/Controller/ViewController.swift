@@ -26,7 +26,7 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
     
     var stopButton = DynamicButton()
     
-    var isCurrentlyFasting = false
+    var isCurrentlyFasting = true
     
     // PREPARED STACKVIEW OF CONTROLS
    
@@ -214,7 +214,7 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
             // UI Controls
 //            masterSlider.closeButton.addTarget(self, action: #selector(self.closeChildView), for: .touchUpInside) // Slide down
             masterSlider.closeButton.addTarget(self, action: #selector(self.slideDownWithExpression), for: .touchUpInside) // Slide down
-            masterSlider.dynamicButton.addTarget(self, action: #selector(self.beginFastingAction), for: .touchUpInside)
+            masterSlider.beginButton.addTarget(self, action: #selector(self.beginFastingAction), for: .touchUpInside)
 
         }
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
@@ -237,7 +237,7 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.slider!.frame.height/2)
                 self.view.layoutIfNeeded()
-                self.sliderBackgroundView.alpha = 0
+                self.sliderBackgroundView.alpha =  0
             }) { _ in
                 // Do some additional work after loading this view
                 slider.removeFromSuperview()
@@ -263,6 +263,7 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
                     if completed {
                         // Completion of the remainder of the slider slide down
                         UIView.animate(withDuration: 0.2, animations: {
+                            
                             self.sliderBackgroundView.alpha = 0
                             self.slider?.alpha = 1
                             slider.center = CGPoint(x: self.view.center.x, y: self.view.frame.height + self.slider!.frame.height/2 )

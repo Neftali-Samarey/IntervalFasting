@@ -37,7 +37,8 @@ class SliderView : UIView {
     
     
     // MARK: UI PROPERTIES
-    let timeframeButtons = TimeframeStackview()
+
+    let bottomTimeframeButtons = TimeframeStackview()
     
     let mainBackground : UIView = {
         let view = UIView()
@@ -66,6 +67,9 @@ class SliderView : UIView {
         return button
     }()
     
+    // TODO: - DECLARED BUTTON FOR USE
+    var beginButton : DynamicButton
+    
     let closeButton : UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "close"), for: .normal)
@@ -76,6 +80,15 @@ class SliderView : UIView {
 
     
     public required init?(coder aDecoder: NSCoder) {
+        
+        // INIT THE BUTTON (WORK ON FIXING A FEW BUGS)
+        beginButton = DynamicButton(defaultColor: .UIPinkOrange(), highlightedColor: .UIPinkOrangeDarkerShade())
+        beginButton.backgroundColor = UIColor.UIPinkOrange()
+        beginButton.setTitle("Start Now", for: .normal)
+        beginButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 21.0)
+        beginButton.roundEdges()
+        beginButton.translatesAutoresizingMaskIntoConstraints = false
+       
         super.init(coder: aDecoder)
         
         setTopLayout()
@@ -84,6 +97,15 @@ class SliderView : UIView {
     }
     
     override init(frame: CGRect) {
+    
+        // TODO: Works but not as efficient
+        beginButton = DynamicButton(defaultColor: .UIPinkOrange(), highlightedColor: .UIPinkOrangeDarkerShade())
+        beginButton.backgroundColor = UIColor.UIPinkOrange()
+        beginButton.setTitle("Start Now", for: .normal)
+        beginButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 21.0)
+        beginButton.roundEdges()
+        beginButton.translatesAutoresizingMaskIntoConstraints = false
+        
         super.init(frame: frame)
         self.layer.cornerRadius = 15
         self.backgroundColor = UIColor.init(red: 245/255, green: 246/255, blue: 250/255, alpha: 1.0)
@@ -105,19 +127,35 @@ class SliderView : UIView {
        // mainBackground.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
     }
     
-    private func setTopLayout() {
+    private func setButtonLayout() {
         
-        timeframeButtons.translatesAutoresizingMaskIntoConstraints = false
+        bottomTimeframeButtons.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.addSubview(beginButton)
+        self.addSubview(bottomTimeframeButtons)
+        //  dynamicButton.addTarget(self, action: #selector(SliderView.comfirmAllDatapoints), for: .touchUpInside)
+        
+        // Bottom timeframe buttons
+        bottomTimeframeButtons.bottomAnchor.constraint(equalTo: self.beginButton.topAnchor, constant: -30).isActive = true
+        bottomTimeframeButtons.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+        bottomTimeframeButtons.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+        bottomTimeframeButtons.heightAnchor.constraint(equalToConstant: self.bounds.height/5).isActive = true
+        
+        DispatchQueue.main.async {
+            self.beginButton.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
+            self.beginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            self.beginButton.widthAnchor.constraint(equalToConstant: self.bounds.width - 30).isActive = true
+            self.beginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -40).isActive = true
+        }
+    }
+    
+    private func setTopLayout() {
+    
         
         self.addSubview(closeButton)
         self.addSubview(viewTitle)
-        self.addSubview(timeframeButtons)
-        
-        // Disable the set button for now until a selection is made
-//        dynamicButton.isEnabled = false
-//        if !dynamicButton.isEnabled {
-//            dynamicButton.backgroundColor = UIColor.gray
-//        }
+
+    
         
         // Close button
         self.closeButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
@@ -125,41 +163,33 @@ class SliderView : UIView {
         self.closeButton.heightAnchor.constraint(equalToConstant: 52).isActive = true
         self.closeButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
         
-        // Middle layout (buttons)
-        self.timeframeButtons.topAnchor.constraint(equalTo: viewTitle.bottomAnchor, constant: 30).isActive = true
-        self.timeframeButtons.heightAnchor.constraint(equalToConstant: self.bounds.height/5).isActive = true
-        self.timeframeButtons.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        self.timeframeButtons.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
-        
-        
+
         // Label title
-        
         self.viewTitle.textAlignment = .center
         
         self.viewTitle.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
         self.viewTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 25).isActive = true
         self.viewTitle.widthAnchor.constraint(equalToConstant: self.bounds.width - 20).isActive = true
         self.viewTitle.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+      
     }
+    
+    
+   
+   
     
    
     
-    private func setButtonLayout() {
-        self.addSubview(dynamicButton)
-        
-      //  dynamicButton.addTarget(self, action: #selector(SliderView.comfirmAllDatapoints), for: .touchUpInside)
-        
-        DispatchQueue.main.async {
-            self.dynamicButton.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
-            self.dynamicButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-            self.dynamicButton.widthAnchor.constraint(equalToConstant: self.bounds.width - 30).isActive = true
-            self.dynamicButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -40).isActive = true
-        }
+    
+    // TODO: - INTENDED COLOR INIT IS NOT WORKING, FIX THIS IN CLASS LEVEL DEFITIION
+    func initializeDynamicCustomButton() {
+      //  beginButton = DynamicButton(defaultColor: .blue, highlightedColor: .lightGray) // Sample
     }
     
     // MARK: Gets the index (1, 2, 3) from the timeframe view itself. Getter only
     func getTimeframeSelectedIndex() -> Int {
-        return timeframeButtons.currentSelectedButton
+        return bottomTimeframeButtons.currentSelectedButton
     }
     
     

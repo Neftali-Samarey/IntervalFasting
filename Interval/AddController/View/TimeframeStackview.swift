@@ -79,7 +79,12 @@ class TimeframeStackview: UIView {
         stackview.distribution = .fillEqually
         
        
-    
+        // MARK: INITIALIZED PROPERTIES BEFORE THIS CALL TO SUPER CLASS *****
+        /*
+         A designated initializer is the primary initializer for a class.
+         It must fully initialize all properties introduced by its class
+         before calling a superclass initializer. (ie right below **)
+         */
         super.init(frame: frame)
         
         backgroundColor = UIColor.clear
@@ -103,10 +108,18 @@ class TimeframeStackview: UIView {
         addSubview(timeFrameLabel)
         
         
-        timeFrameLabel.topAnchor.constraint(equalTo: stackview.bottomAnchor, constant: 15).isActive = true
+        // TODO: Animate this into place
+        timeFrameLabel.bottomAnchor.constraint(equalTo: stackview.topAnchor, constant: -20).isActive = true
         timeFrameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
         timeFrameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
         timeFrameLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        // These sets the label to the bottom of the timeframe buttons
+        
+//        timeFrameLabel.topAnchor.constraint(equalTo: stackview.bottomAnchor, constant: 15).isActive = true
+//        timeFrameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
+//        timeFrameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+//        timeFrameLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
         
         // Set the butttons to the dicttionary

@@ -11,6 +11,9 @@ Basic Overview of the development of an iOS application for iPhone that will be 
 <br/><br/><br/>
 <img src="screenshots/customSlider.png" width="340"/><br/>
 <span>User Input controller (In development)</span>
+<br/><br/><br/>
+<img src="screenshots/animated.gif" width="340"/><br/>
+<span>Sample Animation</span>
 </div>
 
 

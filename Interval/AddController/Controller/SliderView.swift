@@ -136,7 +136,7 @@ class SliderView : UIView {
         //  dynamicButton.addTarget(self, action: #selector(SliderView.comfirmAllDatapoints), for: .touchUpInside)
         
         // Bottom timeframe buttons
-        bottomTimeframeButtons.bottomAnchor.constraint(equalTo: self.beginButton.topAnchor, constant: -30).isActive = true
+        bottomTimeframeButtons.bottomAnchor.constraint(equalTo: self.beginButton.topAnchor, constant: -50).isActive = true
         bottomTimeframeButtons.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
         bottomTimeframeButtons.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
         bottomTimeframeButtons.heightAnchor.constraint(equalToConstant: self.bounds.height/5).isActive = true

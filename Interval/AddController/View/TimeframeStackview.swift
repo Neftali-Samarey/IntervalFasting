@@ -46,28 +46,28 @@ class TimeframeStackview: UIView {
         eightHours = UIButton(type: .roundedRect)
         eightHours.setTitle("8 Hours", for: .normal)
         eightHours.translatesAutoresizingMaskIntoConstraints = false
-        eightHours.tintColor = UIColor.gray
+        eightHours.tintColor = UIColor.black
         eightHours.layer.borderWidth = 1
         eightHours.layer.cornerRadius = 7
-        eightHours.layer.borderColor = UIColor.gray.cgColor
+        eightHours.layer.borderColor = UIColor.black.cgColor
        // eightHours.titleEdgeInsets = UIEdgeInsets(top: 20.0, left: 30.0, bottom: 20.0, right: 30.0)
        
 
         thirteenHours = UIButton(type: .roundedRect)
         thirteenHours.translatesAutoresizingMaskIntoConstraints = false
         thirteenHours.setTitle("13 Hours", for: .normal)
-        thirteenHours.tintColor = UIColor.gray
+        thirteenHours.tintColor = UIColor.black
         thirteenHours.layer.borderWidth = 1
         thirteenHours.layer.cornerRadius = 7
-        thirteenHours.layer.borderColor = UIColor.gray.cgColor
+        thirteenHours.layer.borderColor = UIColor.black.cgColor
         
         sixteenHours = UIButton(type: .roundedRect)
         sixteenHours.translatesAutoresizingMaskIntoConstraints = false
         sixteenHours.setTitle("16 Hours", for: .normal)
-        sixteenHours.tintColor = UIColor.gray
+        sixteenHours.tintColor = UIColor.black
         sixteenHours.layer.borderWidth = 1
         sixteenHours.layer.cornerRadius = 7
-        sixteenHours.layer.borderColor = UIColor.gray.cgColor
+        sixteenHours.layer.borderColor = UIColor.black.cgColor
         
         // Increase the size for both left and right spacing views
         

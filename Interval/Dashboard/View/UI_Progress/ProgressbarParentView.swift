@@ -17,6 +17,7 @@ public class ProgressbarParentView: UIView {
 
     // Progress bar object as property here
     public var progressBar = MKMagneticProgress()
+    public var settingsButton : UIButton
     var delegate : UpdateProgressBarDelegate? = nil
     
     // Dynamic property
@@ -34,12 +35,17 @@ public class ProgressbarParentView: UIView {
 //    }
     
     public required init?(coder aDecoder: NSCoder) {
+        
+        settingsButton = UIButton(type: .custom)
+
         super.init(coder: aDecoder)
         initializeDefaultStyling()
         // Calling the progress bar directly here help
     }
     
     public override init(frame: CGRect) {
+        
+        settingsButton = UIButton(type: .custom)
         super.init(frame: frame)
         initializeDefaultStyling()
          //self.defaultGraphSetup()
@@ -61,12 +67,26 @@ public class ProgressbarParentView: UIView {
         self.layer.shadowOpacity = 0.5;
         
         addProgressBarToParentview()
+    
+    }
+    
+    private func setupSettingsButton() {
         
-       
-     
+        settingsButton.translatesAutoresizingMaskIntoConstraints = false
+        settingsButton.setImage(UIImage(named: "Gears"), for: .normal)
+        
+        addSubview(settingsButton)
+        
+        settingsButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        settingsButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        settingsButton.topAnchor.constraint(equalTo: topAnchor, constant: 60).isActive = true
+        settingsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
+        
     }
     
     private func addProgressBarToParentview() {
+        
+        setupSettingsButton()
         
        // progressBar.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
       //  progressBar.setProgress(progress: dynamicProgressValue, animated: true)

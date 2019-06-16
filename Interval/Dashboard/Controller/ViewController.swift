@@ -33,17 +33,31 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
     
     
 //    var delegate : UpdateProgressBarDelegate? = nil
+    
+    func createReferenceFromParentProgressbarControls() {
+        progressBarview.settingsButton.addTarget(self, action: #selector(self.launchSettingsView), for: .touchUpInside)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedFeedbackGenerator.prepare()
         view.backgroundColor =  UIColor.init(red: 245/255, green: 246/255, blue: 250/255, alpha: 1.0)
         setupDashboardProgressbarView()
+        createReferenceFromParentProgressbarControls()
         setupStackview()
         progressBarview.delegate = self
         setStopButton()
         tapGestureRecognozer = UITapGestureRecognizer(target: self, action: #selector(self.slideViewDown))
+        
 
+    }
+    
+    @objc func launchSettingsView() {
+        
+        selectedFeedbackGenerator.impactOccurred()
+        let settingsControllerReference = SettingsTableViewController(style: .grouped)
+        let navigationController = UINavigationController(rootViewController: settingsControllerReference)
+        self.present(navigationController, animated: true, completion: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -52,8 +66,7 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
     
     // MARK: - BUTTON SETUP
     internal func setStopButton() {
-        
-        
+    
         // Check and hide the button
         guard isCurrentlyFasting != false else {
             return

@@ -47,6 +47,7 @@ class SliderView : UIView {
         return view
     }()
     
+    
     let viewTitle : UILabel = {
         let label = UILabel()
         label.text = "New Goal"

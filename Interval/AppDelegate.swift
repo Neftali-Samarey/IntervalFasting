@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Finalize by styling any of the remaining controllers that will be subclasses of this controller
+        
+        
+        // Ask the user to allow user notifcation (local in this app)
+        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { (granted, error) in
+            if (!granted) {
+                // TODO: Alert user that notifications for this app must be granted.
+                print("User did not allow  notifications")
+            }
+        }
+        
+        
+        
+        
         return true
     }
 

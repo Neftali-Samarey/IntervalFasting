@@ -21,6 +21,7 @@
 		ED2C2F2F2297986600B857D3 /* ColorConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F2E2297986600B857D3 /* ColorConverter.swift */; };
 		ED2C2F312297994C00B857D3 /* GradienceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F302297994C00B857D3 /* GradienceExtension.swift */; };
 		ED2C2F332297AE4D00B857D3 /* MKMagneticProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F322297AE4D00B857D3 /* MKMagneticProgress.swift */; };
+		ED8F9CD122B6D5B700AD3A0D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F9CD022B6D5B700AD3A0D /* SettingsTableViewController.swift */; };
 		ED95F230229CDB0000D6EB40 /* HorizontalControlStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F22F229CDB0000D6EB40 /* HorizontalControlStack.swift */; };
 		ED95F232229CF16C00D6EB40 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F231229CF16C00D6EB40 /* Extensions.swift */; };
 		ED95F237229CF69000D6EB40 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F236229CF69000D6EB40 /* SliderView.swift */; };
@@ -46,6 +47,7 @@
 		ED2C2F2E2297986600B857D3 /* ColorConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorConverter.swift; sourceTree = "<group>"; };
 		ED2C2F302297994C00B857D3 /* GradienceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradienceExtension.swift; sourceTree = "<group>"; };
 		ED2C2F322297AE4D00B857D3 /* MKMagneticProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMagneticProgress.swift; sourceTree = "<group>"; };
+		ED8F9CD022B6D5B700AD3A0D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		ED95F22F229CDB0000D6EB40 /* HorizontalControlStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalControlStack.swift; sourceTree = "<group>"; };
 		ED95F231229CF16C00D6EB40 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		ED95F236229CF69000D6EB40 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				ED2C2F0D229773F800B857D3 /* AppDelegate.swift */,
+				ED8F9CCF22B6D55A00AD3A0D /* Settings Controller */,
 				ED125A5B22AC87E100E387E4 /* Controls */,
 				ED125A1922A3875100E387E4 /* App Services */,
 				ED125A1822A3828000E387E4 /* Core Data */,
@@ -222,6 +225,14 @@
 			name = ControlView;
 			sourceTree = "<group>";
 		};
+		ED8F9CCF22B6D55A00AD3A0D /* Settings Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ED8F9CD022B6D5B700AD3A0D /* SettingsTableViewController.swift */,
+			);
+			path = "Settings Controller";
+			sourceTree = "<group>";
+		};
 		ED95F233229CF62800D6EB40 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +334,7 @@
 				ED2C2F2A2297752100B857D3 /* CircularButton.swift in Sources */,
 				ED2C2F2F2297986600B857D3 /* ColorConverter.swift in Sources */,
 				ED95F23B229DF32900D6EB40 /* UIColorExtensions.swift in Sources */,
+				ED8F9CD122B6D5B700AD3A0D /* SettingsTableViewController.swift in Sources */,
 				ED2C2F16229773F800B857D3 /* Interval.xcdatamodeld in Sources */,
 				ED95F237229CF69000D6EB40 /* SliderView.swift in Sources */,
 				ED95F23E229E44D200D6EB40 /* TimeframeStackview.swift in Sources */,

@@ -12,14 +12,20 @@ import UIKit
 //    func dataToSend(timeSelected: Int)
 //}
 
+protocol SelectedValueDelegate {
+    var selectedIndex : Int { get set } // Get the index value
+}
+
 class TimeframeStackview: UIView {
+    
+    var delegate : SelectedValueDelegate? = nil
 
     var selectedOption = 0
     var buttonIdentifierDicionary = [UIButton: Int]() // use this to map ou the button
     
 //    var delegate : timeframeToParentDelegate? = nil
     
-    // MARK: HOLDING VARIANLE FOR THE SELECTED TTIME FRAME
+    // MARK: GLOBAL HOLDING VARIABLE FOR THE SELECTED TTIME FRAME
     public var currentSelectedButton = 0
     
     
@@ -85,6 +91,7 @@ class TimeframeStackview: UIView {
          It must fully initialize all properties introduced by its class
          before calling a superclass initializer. (ie right below **)
          */
+        
         super.init(frame: frame)
         
         backgroundColor = UIColor.clear
@@ -95,6 +102,7 @@ class TimeframeStackview: UIView {
         addSubview(stackview)
 
         // Button width overrides
+        
 //        eightHours.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/3).isActive = true
 //        thirteenHours.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/3).isActive = true
 //        sixteenHours.widthAnchor.constraint(equalToConstant:UIScreen.main.bounds.width/3).isActive = true
@@ -125,10 +133,14 @@ class TimeframeStackview: UIView {
         // Set the butttons to the dicttionary
         buttonIdentifierDicionary.updateValue(1, forKey: eightHours)
         
-        // Targes
+        
+        //TODO: MOVE THEM TO THEIR PARENT
+        // Targes (maybe moving them to their parent)
+        
+        /*
         eightHours.addTarget(self, action: #selector(TimeframeStackview.setEightHours), for: .touchUpInside)
         thirteenHours.addTarget(self, action: #selector(TimeframeStackview.setThirteenHours), for: .touchUpInside)
-        sixteenHours.addTarget(self, action: #selector(TimeframeStackview.setSixteenHours), for: .touchUpInside)
+        sixteenHours.addTarget(self, action: #selector(TimeframeStackview.setSixteenHours), for: .touchUpInside) */
         
         
         
@@ -164,24 +176,30 @@ class TimeframeStackview: UIView {
     }
     
     // EIGHT HOURS
-    @objc func setEightHours() { // Key is an Int, in this example it is 1
-        print("Seleced button is 8 hours")
-        currentSelectedButton = 1
-        updateSelectionMade(selection: currentSelectedButton)
-     
-    }
+//    @objc func setEightHours() { // Key is an Int, in this example it is 1
+//        print("Seleced button is 8 hours")
+//        currentSelectedButton = 1
+//        updateSelectionMade(selection: currentSelectedButton)
+//
+//    }
+//
+//    @objc func setThirteenHours() { // Key is an Int, in this example it is 1
+//        print("Seleced button is 13 hours")
+//        currentSelectedButton = 2
+//        updateSelectionMade(selection: currentSelectedButton)
+//    }
+//
+//    @objc func setSixteenHours() { // Key is an Int, in this example it is 1
+//        print("Seleced button is 16 hours")
+//        currentSelectedButton = 3
+//        updateSelectionMade(selection: currentSelectedButton)
+//       // delegate?.selectedValue(userSelectedInput: currentSelectedButton)
+//        delegate?.selectedIndex = currentSelectedButton
+//
+//    }
     
-    @objc func setThirteenHours() { // Key is an Int, in this example it is 1
-        print("Seleced button is 13 hours")
-        currentSelectedButton = 2
-        updateSelectionMade(selection: currentSelectedButton)
-    }
     
-    @objc func setSixteenHours() { // Key is an Int, in this example it is 1
-        print("Seleced button is 16 hours")
-        currentSelectedButton = 3
-        updateSelectionMade(selection: currentSelectedButton)
-    }
+    
     
 }
 

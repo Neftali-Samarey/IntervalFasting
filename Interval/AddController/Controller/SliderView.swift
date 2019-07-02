@@ -19,23 +19,15 @@ protocol getSliderSelectionDataDelegate {
 }
 
 class SliderView : UIView {
-    
-    
-    // Property observer
-//    var hasTimeInputBeenSelected : String  {
-//        willSet {
-//            print("Will be called")
-//        }
-//        didSet {
-//            print("Did set called ")
-//        }
-//    }
-    
-    
+
     // Delegate
     var delegate : getSliderSelectionDataDelegate? = nil
-    
-    
+
+    // Meter Instance
+    var timeMeter = AMSpeedMeterView()
+    var selectedFastingTimeSlot = 0
+  
+    let selectedFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     // MARK: UI PROPERTIES
 
     let bottomTimeframeButtons = TimeframeStackview()
@@ -89,35 +81,52 @@ class SliderView : UIView {
         beginButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 21.0)
         beginButton.roundEdges()
         beginButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Initiatew the dynamic clock
+    
        
         super.init(coder: aDecoder)
         
+        selectedFeedbackGenerator.prepare()
         setTopLayout()
         setButtonLayout()
+        setupMeter()
         setupBackgroundView()
+        
+        // Initlaize the controls
+        bottomTimeframeButtons.eightHours.addTarget(self, action: #selector(SliderView.setEightHours), for: .touchUpInside)
+        bottomTimeframeButtons.thirteenHours.addTarget(self, action: #selector(SliderView.setThirteenHours), for: .touchUpInside)
+        bottomTimeframeButtons.sixteenHours.addTarget(self, action: #selector(SliderView.setSixteenHours), for: .touchUpInside)
     }
     
     override init(frame: CGRect) {
     
         // TODO: Works but not as efficient
-        beginButton = DynamicButton(defaultColor: .UIPinkOrange(), highlightedColor: .UIPinkOrangeDarkerShade())
-        beginButton.backgroundColor = UIColor.UIPinkOrange()
+        beginButton = DynamicButton(defaultColor: .emeraldColor(), highlightedColor: .lightGray)
+        beginButton.backgroundColor = UIColor.emeraldColor()
         beginButton.setTitle("Start Now", for: .normal)
         beginButton.titleLabel?.font = UIFont(name: "Roboto-Medium", size: 21.0)
         beginButton.roundEdges()
         beginButton.translatesAutoresizingMaskIntoConstraints = false
-        
+       
         super.init(frame: frame)
         self.layer.cornerRadius = 15
         self.backgroundColor = UIColor.init(red: 245/255, green: 246/255, blue: 250/255, alpha: 1.0)
-        
+
+        selectedFeedbackGenerator.prepare()
         setTopLayout()
         setButtonLayout()
+        setupMeter()
         setupBackgroundView()
+        
+        bottomTimeframeButtons.eightHours.addTarget(self, action: #selector(SliderView.setEightHours), for: .touchUpInside)
+        bottomTimeframeButtons.thirteenHours.addTarget(self, action: #selector(SliderView.setThirteenHours), for: .touchUpInside)
+        bottomTimeframeButtons.sixteenHours.addTarget(self, action: #selector(SliderView.setSixteenHours), for: .touchUpInside)
     }
     
     deinit {
-        print("Parent level data left with: \(getTimeframeSelectedIndex())")
+    
+        
     }
     
     
@@ -146,7 +155,7 @@ class SliderView : UIView {
             self.beginButton.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
             self.beginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
             self.beginButton.widthAnchor.constraint(equalToConstant: self.bounds.width - 30).isActive = true
-            self.beginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -40).isActive = true
+            self.beginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50).isActive = true
         }
     }
     
@@ -155,7 +164,7 @@ class SliderView : UIView {
         
         self.addSubview(closeButton)
         self.addSubview(viewTitle)
-
+      
     
         
         // Close button
@@ -172,17 +181,52 @@ class SliderView : UIView {
         self.viewTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 25).isActive = true
         self.viewTitle.widthAnchor.constraint(equalToConstant: self.bounds.width - 20).isActive = true
         self.viewTitle.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
       
     }
     
-    
+    private func setupMeter() {
+        
+        timeMeter.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(timeMeter)
+        
+       
+        
+        // Some styling directly to the meter
+//        timeMeter.meterColor = UIColor.blue
+        
+        timeMeter.minValue = 0
+        timeMeter.maxValue = 16
+        timeMeter.meterColor = UIColor.white
+        timeMeter.numberOfValue = 3
+        timeMeter.valueIndexColor = UIColor.lightGray
+        
+        
+        timeMeter.valueHandColor = UIColor.TipiePink()
+        timeMeter.valueHandWidth = 10
+        
+        timeMeter.meterBorderLineColor = UIColor.white
+        timeMeter.incrementBorderWith(width: 10)
+        
+        let local_width = self.bounds.width/2
+        let local_height = self.bounds.height/2
+        
+        // Enable the constraints
+       // timeMeter.frame = CGRect(x: 40 , y: 40, width: 250, height: 150)
+        timeMeter.topAnchor.constraint(equalTo: viewTitle.bottomAnchor, constant: 30).isActive = true
+        timeMeter.widthAnchor.constraint(equalToConstant: local_width + 100).isActive = true
+        timeMeter.heightAnchor.constraint(equalToConstant: local_height + 100).isActive = true
+        timeMeter.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        
+    }
+
    
-   
-    
-   
     
     
+    // TODO: AT THE TIMER CLOCK TO THE SUBVIEW
+    // self.addSubview(timeMeter)
+    
+  
+
     // TODO: - INTENDED COLOR INIT IS NOT WORKING, FIX THIS IN CLASS LEVEL DEFITIION
     func initializeDynamicCustomButton() {
       //  beginButton = DynamicButton(defaultColor: .blue, highlightedColor: .lightGray) // Sample
@@ -199,4 +243,38 @@ class SliderView : UIView {
         delegate?.dataFromSliderControllerWith(test: getTimeframeSelectedIndex())
     }
     
+    
+    
+    // MARK: SELECTION MADE FROM USER
+    
+    @objc func setEightHours() {
+
+        selectedFeedbackGenerator.impactOccurred()
+        timeMeter.currentValue = 8
+        selectedFastingTimeSlot = timeMeter.getSelectedValue()
+//        print("Seleced button is 8 hours")
+//        currentSelectedButton = 1
+//        updateSelectionMade(selection: currentSelectedButton)
+
+    }
+    
+    @objc func setThirteenHours() {
+
+        selectedFeedbackGenerator.impactOccurred()
+        timeMeter.currentValue = 13
+        selectedFastingTimeSlot = timeMeter.getSelectedValue()
+    }
+    
+    @objc func setSixteenHours() {
+
+        selectedFeedbackGenerator.impactOccurred()
+        timeMeter.currentValue = 16
+        selectedFastingTimeSlot = timeMeter.getSelectedValue()
+        
+    }
+    
+    
+    internal func commitChangesMadeWith(timeSelected: Int) {
+        print("Saved with changes made with: \(timeSelected)")
+    }
 }

@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		ED125A1B22A3876900E387E4 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED125A1A22A3876900E387E4 /* LocalNotificationManager.swift */; };
 		ED125A1E22A4D64700E387E4 /* DynamicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED125A1D22A4D64700E387E4 /* DynamicButton.swift */; };
-		ED125A5D22AC87F300E387E4 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED125A5C22AC87F300E387E4 /* Clock.swift */; };
+		ED125A5D22AC87F300E387E4 /* IntervalClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED125A5C22AC87F300E387E4 /* IntervalClock.swift */; };
+		ED1C642822C9226F00C88FF4 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1C642722C9226F00C88FF4 /* CoreDataManager.swift */; };
+		ED1C642A22C922FA00C88FF4 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1C642922C922FA00C88FF4 /* ViewControllerExtension.swift */; };
 		ED2C2F0E229773F800B857D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F0D229773F800B857D3 /* AppDelegate.swift */; };
 		ED2C2F10229773F800B857D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F0F229773F800B857D3 /* ViewController.swift */; };
 		ED2C2F13229773F800B857D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED2C2F11229773F800B857D3 /* Main.storyboard */; };
@@ -22,6 +24,7 @@
 		ED2C2F312297994C00B857D3 /* GradienceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F302297994C00B857D3 /* GradienceExtension.swift */; };
 		ED2C2F332297AE4D00B857D3 /* MKMagneticProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F322297AE4D00B857D3 /* MKMagneticProgress.swift */; };
 		ED8F9CD122B6D5B700AD3A0D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F9CD022B6D5B700AD3A0D /* SettingsTableViewController.swift */; };
+		ED8F9CD322C00CB300AD3A0D /* AMSpeedMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F9CD222C00CB300AD3A0D /* AMSpeedMeterView.swift */; };
 		ED95F230229CDB0000D6EB40 /* HorizontalControlStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F22F229CDB0000D6EB40 /* HorizontalControlStack.swift */; };
 		ED95F232229CF16C00D6EB40 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F231229CF16C00D6EB40 /* Extensions.swift */; };
 		ED95F237229CF69000D6EB40 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F236229CF69000D6EB40 /* SliderView.swift */; };
@@ -33,7 +36,9 @@
 /* Begin PBXFileReference section */
 		ED125A1A22A3876900E387E4 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		ED125A1D22A4D64700E387E4 /* DynamicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicButton.swift; sourceTree = "<group>"; };
-		ED125A5C22AC87F300E387E4 /* Clock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		ED125A5C22AC87F300E387E4 /* IntervalClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntervalClock.swift; sourceTree = "<group>"; };
+		ED1C642722C9226F00C88FF4 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		ED1C642922C922FA00C88FF4 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		ED2C2F0A229773F800B857D3 /* Interval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Interval.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED2C2F0D229773F800B857D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED2C2F0F229773F800B857D3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +53,7 @@
 		ED2C2F302297994C00B857D3 /* GradienceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradienceExtension.swift; sourceTree = "<group>"; };
 		ED2C2F322297AE4D00B857D3 /* MKMagneticProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMagneticProgress.swift; sourceTree = "<group>"; };
 		ED8F9CD022B6D5B700AD3A0D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		ED8F9CD222C00CB300AD3A0D /* AMSpeedMeterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMSpeedMeterView.swift; sourceTree = "<group>"; };
 		ED95F22F229CDB0000D6EB40 /* HorizontalControlStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalControlStack.swift; sourceTree = "<group>"; };
 		ED95F231229CF16C00D6EB40 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		ED95F236229CF69000D6EB40 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
@@ -71,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				ED2C2F14229773F800B857D3 /* Interval.xcdatamodeld */,
+				ED1C642722C9226F00C88FF4 /* CoreDataManager.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -94,7 +101,8 @@
 		ED125A5B22AC87E100E387E4 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				ED125A5C22AC87F300E387E4 /* Clock.swift */,
+				ED8F9CD222C00CB300AD3A0D /* AMSpeedMeterView.swift */,
+				ED125A5C22AC87F300E387E4 /* IntervalClock.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -138,6 +146,7 @@
 		ED2C2F222297740B00B857D3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ED1C642922C922FA00C88FF4 /* ViewControllerExtension.swift */,
 				ED2C2F0F229773F800B857D3 /* ViewController.swift */,
 			);
 			path = Controller;
@@ -330,10 +339,13 @@
 			files = (
 				ED125A1B22A3876900E387E4 /* LocalNotificationManager.swift in Sources */,
 				ED2C2F332297AE4D00B857D3 /* MKMagneticProgress.swift in Sources */,
-				ED125A5D22AC87F300E387E4 /* Clock.swift in Sources */,
+				ED8F9CD322C00CB300AD3A0D /* AMSpeedMeterView.swift in Sources */,
+				ED1C642822C9226F00C88FF4 /* CoreDataManager.swift in Sources */,
+				ED125A5D22AC87F300E387E4 /* IntervalClock.swift in Sources */,
 				ED2C2F2A2297752100B857D3 /* CircularButton.swift in Sources */,
 				ED2C2F2F2297986600B857D3 /* ColorConverter.swift in Sources */,
 				ED95F23B229DF32900D6EB40 /* UIColorExtensions.swift in Sources */,
+				ED1C642A22C922FA00C88FF4 /* ViewControllerExtension.swift in Sources */,
 				ED8F9CD122B6D5B700AD3A0D /* SettingsTableViewController.swift in Sources */,
 				ED2C2F16229773F800B857D3 /* Interval.xcdatamodeld in Sources */,
 				ED95F237229CF69000D6EB40 /* SliderView.swift in Sources */,

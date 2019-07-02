@@ -28,7 +28,7 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
     
     var isCurrentlyFasting = true
     
-    // PREPARED STACKVIEW OF CONTROLS
+    
    
     
     
@@ -48,14 +48,13 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
         progressBarview.delegate = self
         setStopButton()
         tapGestureRecognozer = UITapGestureRecognizer(target: self, action: #selector(self.slideViewDown))
-        
-
+    
     }
     
     @objc func launchSettingsView() {
         
         selectedFeedbackGenerator.impactOccurred()
-        let settingsControllerReference = SettingsTableViewController(style: .grouped)
+        let settingsControllerReference = SettingsTableViewController(style: .grouped)         // FIXME: *** Settings conttrolle rnot displaying in grouped manner
         let navigationController = UINavigationController(rootViewController: settingsControllerReference)
         self.present(navigationController, animated: true, completion: nil)
     }
@@ -297,7 +296,6 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
     }
     
     
-    
     @objc func dataFromSliderControllerWith(test: Int) {
         print("Deleaged data is \(test)")
         slideViewDown() // there is an animation bug whislt this is loading down, use the other method, don't use this
@@ -307,6 +305,7 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
     
     // MARK: UI CONTROLS
     @objc func beginFastingAction() {
+        
         print("Beginning ...")
         
         // Save the data

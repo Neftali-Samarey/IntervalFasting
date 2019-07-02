@@ -13,5 +13,12 @@ import UIKit
 class IntervalClock : MKMagneticProgress {
     
     // Let the coding begin ...
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
 }

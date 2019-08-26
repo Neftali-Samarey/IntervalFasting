@@ -14,7 +14,15 @@ import UIKit
 //}
 
 class ViewController: UIViewController, getSliderSelectionDataDelegate {
+    
+    // Not in use
+    func userDidSaveDataWith(sampleSelectionId: Int) {
+        print("Test")
+    }
+    
    
+    var stockBView = UIView()
+    var stockBViewTwo = UIView()
     
 
     var progressBarview = ProgressbarParentView()
@@ -27,15 +35,57 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
     var stopButton = DynamicButton()
     
     var isCurrentlyFasting = true
+    var bottomDashboardStack : UIStackView! // Bottom stack view will be in place for the main controller
     
-    
-   
+    var statusLabel = UILabel()
+    var elapsedTimeLabl = UILabel()
     
     
 //    var delegate : UpdateProgressBarDelegate? = nil
     
     func createReferenceFromParentProgressbarControls() {
         progressBarview.settingsButton.addTarget(self, action: #selector(self.launchSettingsView), for: .touchUpInside)
+    }
+    
+    
+
+    
+    func initializeDashboardStack() {
+        
+        // This is intended to be hidden and instead, where the txt reads, an image of an empty or null playground is in place
+        // Animation or a slide in would occur as the user sets the initial setup for fasting, this then begins to appear
+    
+        // Test label data for now, opting for  creating this externally so they have ther own styling
+        statusLabel.text = "Time Left"
+        statusLabel.font = UIFont(name: "Roboto-Medium", size: 26.0)
+        statusLabel.textAlignment = .center
+        statusLabel.textColor = UIColor.init(hexString: "#383838")
+        statusLabel.layer.borderWidth = 1
+        
+        elapsedTimeLabl.text = "8 hours"
+        elapsedTimeLabl.font = UIFont(name: "Roboto-Medium", size: 32.0)
+        elapsedTimeLabl.textAlignment = .center
+        elapsedTimeLabl.textColor = UIColor.init(hexString: "#383838")
+        elapsedTimeLabl.layer.borderWidth = 1
+       
+        // To make space above and below the 2 labesl, I've added some blank UIViews to the top and bottom of the stack
+        bottomDashboardStack = UIStackView(arrangedSubviews: [stockBView, statusLabel, elapsedTimeLabl, stockBViewTwo])
+        bottomDashboardStack.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(bottomDashboardStack)
+        bottomDashboardStack.axis = .vertical
+        bottomDashboardStack.spacing = 1
+        bottomDashboardStack.distribution = .fillEqually
+        
+        // Now set the constraints for each
+        
+       
+        
+        bottomDashboardStack.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true // Needs to be pinned to the top of the button if exists
+        bottomDashboardStack.topAnchor.constraint(equalTo: horizontalControlStackview.bottomAnchor, constant: 5).isActive = true // temp for now
+        bottomDashboardStack.widthAnchor.constraint(equalToConstant: self.view.bounds.width).isActive = true
+         
+        
+        
     }
 
     override func viewDidLoad() {
@@ -45,6 +95,7 @@ class ViewController: UIViewController, getSliderSelectionDataDelegate {
         setupDashboardProgressbarView()
         createReferenceFromParentProgressbarControls()
         setupStackview()
+        initializeDashboardStack()
         progressBarview.delegate = self
         setStopButton()
         tapGestureRecognozer = UITapGestureRecognizer(target: self, action: #selector(self.slideViewDown))

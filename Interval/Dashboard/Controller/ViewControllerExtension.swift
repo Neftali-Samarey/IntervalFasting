@@ -13,6 +13,11 @@ import UIKit
 
 extension ViewController {
     
+    @objc func showEditController() {
+        print("Called extended edit button")
+        selectedFeedbackGenerator.impactOccurred()
+    }
+    
     // MARK: TEST METHOD (not in use)
     @objc func saveDataWith() {
         print("Saving data on queue")

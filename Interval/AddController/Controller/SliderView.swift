@@ -14,8 +14,14 @@ enum EntryType {
     case Edit
 }
 
+/*
+ This protocol will handle the transering of data to the main controller
+ */
+
+
 protocol getSliderSelectionDataDelegate {
     func dataFromSliderControllerWith(test: Int)
+    func userDidSaveDataWith(sampleSelectionId: Int)
 }
 
 class SliderView : UIView {
@@ -29,6 +35,7 @@ class SliderView : UIView {
   
     let selectedFeedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     // MARK: UI PROPERTIES
+
 
     let bottomTimeframeButtons = TimeframeStackview()
     
@@ -74,7 +81,7 @@ class SliderView : UIView {
     
     public required init?(coder aDecoder: NSCoder) {
         
-        // INIT THE BUTTON (WORK ON FIXING A FEW BUGS)
+        // INIT THE BUTTON (WORK ON FIXING A FsEW BUGS)
         beginButton = DynamicButton(defaultColor: .UIPinkOrange(), highlightedColor: .UIPinkOrangeDarkerShade())
         beginButton.backgroundColor = UIColor.UIPinkOrange()
         beginButton.setTitle("Start Now", for: .normal)
@@ -116,7 +123,8 @@ class SliderView : UIView {
         selectedFeedbackGenerator.prepare()
         setTopLayout()
         setButtonLayout()
-        setupMeter()
+        setupTimeGauge()
+       // setupMeter()
         setupBackgroundView()
         
         bottomTimeframeButtons.eightHours.addTarget(self, action: #selector(SliderView.setEightHours), for: .touchUpInside)
@@ -184,12 +192,15 @@ class SliderView : UIView {
       
     }
     
-    private func setupMeter() {
+    private func setupTimeGauge() {
         
+    }
+    
+    
+    private func setupMeter() {
+
         timeMeter.translatesAutoresizingMaskIntoConstraints = false
         addSubview(timeMeter)
-        
-       
         
         // Some styling directly to the meter
 //        timeMeter.meterColor = UIColor.blue
@@ -277,4 +288,7 @@ class SliderView : UIView {
     internal func commitChangesMadeWith(timeSelected: Int) {
         print("Saved with changes made with: \(timeSelected)")
     }
+    
+    
+    
 }

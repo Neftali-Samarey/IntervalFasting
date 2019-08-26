@@ -25,6 +25,7 @@
 		ED2C2F332297AE4D00B857D3 /* MKMagneticProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C2F322297AE4D00B857D3 /* MKMagneticProgress.swift */; };
 		ED8F9CD122B6D5B700AD3A0D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F9CD022B6D5B700AD3A0D /* SettingsTableViewController.swift */; };
 		ED8F9CD322C00CB300AD3A0D /* AMSpeedMeterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8F9CD222C00CB300AD3A0D /* AMSpeedMeterView.swift */; };
+		ED91AA7F2314199D0035340E /* LevelGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED91AA7E2314199D0035340E /* LevelGauge.swift */; };
 		ED95F230229CDB0000D6EB40 /* HorizontalControlStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F22F229CDB0000D6EB40 /* HorizontalControlStack.swift */; };
 		ED95F232229CF16C00D6EB40 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F231229CF16C00D6EB40 /* Extensions.swift */; };
 		ED95F237229CF69000D6EB40 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED95F236229CF69000D6EB40 /* SliderView.swift */; };
@@ -54,6 +55,7 @@
 		ED2C2F322297AE4D00B857D3 /* MKMagneticProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMagneticProgress.swift; sourceTree = "<group>"; };
 		ED8F9CD022B6D5B700AD3A0D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		ED8F9CD222C00CB300AD3A0D /* AMSpeedMeterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMSpeedMeterView.swift; sourceTree = "<group>"; };
+		ED91AA7E2314199D0035340E /* LevelGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelGauge.swift; sourceTree = "<group>"; };
 		ED95F22F229CDB0000D6EB40 /* HorizontalControlStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalControlStack.swift; sourceTree = "<group>"; };
 		ED95F231229CF16C00D6EB40 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		ED95F236229CF69000D6EB40 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				ED95F23A229DF32900D6EB40 /* UIColorExtensions.swift */,
 				ED2C2F2E2297986600B857D3 /* ColorConverter.swift */,
 				ED2C2F302297994C00B857D3 /* GradienceExtension.swift */,
+				ED91AA7E2314199D0035340E /* LevelGauge.swift */,
 				ED95F231229CF16C00D6EB40 /* Extensions.swift */,
 			);
 			path = Helpers;
@@ -339,6 +342,7 @@
 			files = (
 				ED125A1B22A3876900E387E4 /* LocalNotificationManager.swift in Sources */,
 				ED2C2F332297AE4D00B857D3 /* MKMagneticProgress.swift in Sources */,
+				ED91AA7F2314199D0035340E /* LevelGauge.swift in Sources */,
 				ED8F9CD322C00CB300AD3A0D /* AMSpeedMeterView.swift in Sources */,
 				ED1C642822C9226F00C88FF4 /* CoreDataManager.swift in Sources */,
 				ED125A5D22AC87F300E387E4 /* IntervalClock.swift in Sources */,
@@ -512,7 +516,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = samarey.me.Interval;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -530,7 +534,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = samarey.me.Interval;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

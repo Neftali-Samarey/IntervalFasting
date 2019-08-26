@@ -31,7 +31,7 @@
             <objects>
                 <tableViewController id="gXV-GK-hS0" customClass="SettingsTableViewController" customModule="Interval" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="mFi-Df-rpL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -61,7 +61,9 @@
                             <outlet property="delegate" destination="gXV-GK-hS0" id="MRt-Qf-OZL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ghf-wD-jFM"/>
+                    <navigationItem key="navigationItem" id="ghf-wD-jFM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="Jjw-2V-t1A"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tqO-VG-Nsl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -72,7 +74,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WhQ-ZO-u5S" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="As0-d4-MU7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="As0-d4-MU7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
